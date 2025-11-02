@@ -13,7 +13,7 @@ object RoseGoldItems {
     fun registerItem(
         location: ResourceLocation,
         func: Function<Item.Properties, Item>
-    ) {
+    ): Item? {
         val resourceKey = ResourceKey.create(
             Registries.ITEM,
             location
@@ -22,18 +22,18 @@ object RoseGoldItems {
         val roseGoldItemProperties = Item.Properties()
         roseGoldItemProperties.setId(resourceKey)
 
-        Registry.register(
+        return Registry.register(
             BuiltInRegistries.ITEM,
             resourceKey,
             func.apply(roseGoldItemProperties)
         )
-
     }
 
     fun registerItems() {
         registerItem(
             ResourceLocation.fromNamespaceAndPath(RoseGold.MOD_ID, "raw_rose_gold")
-        ) { properties ->
+        ) {
+            properties ->
             val item = Item(properties)
             item
         }
