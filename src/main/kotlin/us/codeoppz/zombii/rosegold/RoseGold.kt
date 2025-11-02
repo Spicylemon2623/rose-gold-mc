@@ -11,7 +11,7 @@ object RoseGold : ModInitializer {
 	override fun onInitialize() {
 		logger.info("Hello Fabric world!")
 
-        RoseGoldItems.registerItems()
+        RoseGoldItems.init()
         RoseGoldBlocks.init()
 	}
 }

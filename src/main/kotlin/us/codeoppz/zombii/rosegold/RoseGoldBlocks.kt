@@ -1,38 +1,37 @@
 package us.codeoppz.zombii.rosegold
 
-import net.minecraft.core.Registry
-import net.minecraft.core.registries.BuiltInRegistries
-import net.minecraft.core.registries.Registries
-import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
-import net.minecraft.world.item.BlockItem
-import net.minecraft.world.item.Item
-import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.SoundType
-import net.minecraft.world.level.block.state.BlockBehaviour
-import net.minecraft.world.level.material.MapColor
+import net.minecraft.block.AbstractBlock
+import net.minecraft.block.Block
+import net.minecraft.block.MapColor
+import net.minecraft.item.BlockItem
+import net.minecraft.registry.BuiltinRegistries
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
+import net.minecraft.registry.RegistryKey
+import net.minecraft.sound.BlockSoundGroup
+import net.minecraft.sound.SoundCategory
+import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Identifier
 
 object RoseGoldBlocks {
-    private const val MOD_ID = "rose_gold"
-
-    private fun keyOfBlock(name: String): ResourceKey<Block> =
-        ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name))
+    private fun keyOfBlock(name: String): RegistryKey<Block> =
+        RegistryKey.of(Registries.BLOCK.key, Identifier.of(RoseGold.MOD_ID, name))
 
     private fun register(
         name: String,
-        blockFactory: (BlockBehaviour.Properties) -> Block,
-        settings: BlockBehaviour.Properties = BlockBehaviour.Properties.of()
-            .mapColor(MapColor.COLOR_PINK)
+        blockFactory: (AbstractBlock.Settings) -> Block,
+        settings: AbstractBlock.Settings = AbstractBlock.Settings.create()
+            .mapColor(MapColor.PINK)
             .strength(5.0f, 6.0f)
-            .sound(SoundType.METAL),
+            .sounds(BlockSoundGroup.METAL),
         registerItem: Boolean = true
     ): Block {
         val blockKey = keyOfBlock(name)
-        val id = blockKey.location()
-        settings.setId(blockKey)
+        val id = blockKey.value
+        settings.registryKey(blockKey)
         val block = blockFactory(settings)
 
-        Registry.register(BuiltInRegistries.BLOCK, id, block)
+        Registry.register(Registries.BLOCK, id, block)
 
         if (registerItem) {
             RoseGoldItems.registerItem(id) { props -> BlockItem(block, props) }
@@ -43,6 +42,11 @@ object RoseGoldBlocks {
 
     val ROSE_GOLD_BLOCK: Block = register(
         "rose_gold_block",
+        { props -> Block(props) }
+    )
+
+    val RAW_ROSE_GOLD_BLOCK: Block = register(
+        "raw_rose_gold_block",
         { props -> Block(props) }
     )
 
