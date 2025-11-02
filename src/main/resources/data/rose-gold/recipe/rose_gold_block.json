@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": "rose_gold:rose_gold_ingot"
+  },
+  "result": {
+    "id": "rose_gold:rose_gold_block",
+    "count": 1
+  }
+}
