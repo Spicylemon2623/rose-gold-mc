@@ -4,12 +4,13 @@ import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
 object RoseGold : ModInitializer {
+    const val MOD_ID = "rose_gold";
+
     private val logger = LoggerFactory.getLogger("rose-gold")
 
 	override fun onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
 		logger.info("Hello Fabric world!")
+
+        RoseGoldItems.registerItems()
 	}
 }
