@@ -40,7 +40,7 @@ object RoseGoldArmorItems {
     }
 
     val REGISTRY_KEY: RegistryKey<out Registry<EquipmentAsset?>?> = RegistryKey.ofRegistry<EquipmentAsset?>(Identifier.ofVanilla("equipment_asset"))
-    val ROSE_GOLD_ARMOR_MATERIAL: ArmorMaterial = ArmorMaterial(
+    val ROSE_GOLD_IRON_ARMOR_MATERIAL: ArmorMaterial = ArmorMaterial(
         30, // durability
         createDefenseMap(
             2,
@@ -63,34 +63,34 @@ object RoseGoldArmorItems {
         )
     )
 
-    val ROSE_GOLD_HELMET = registerItem(
-        "rose_gold_helmet"
+    val ROSE_GOLD_IRON_HELMET = registerItem(
+        "rose_gold_iron_helmet"
     ) { properties ->
-        Item(properties.armor(ROSE_GOLD_ARMOR_MATERIAL, EquipmentType.HELMET))
+        Item(properties.armor(ROSE_GOLD_IRON_ARMOR_MATERIAL, EquipmentType.HELMET))
     }
 
-    val ROSE_GOLD_CHESTPLATE = registerItem(
-        "rose_gold_chestplate"
+    val ROSE_GOLD_IRON_CHESTPLATE = registerItem(
+        "rose_gold_iron_chestplate"
     ) { properties ->
-        Item(properties.armor(ROSE_GOLD_ARMOR_MATERIAL, EquipmentType.CHESTPLATE))
+        Item(properties.armor(ROSE_GOLD_IRON_ARMOR_MATERIAL, EquipmentType.CHESTPLATE))
     }
 
-    val ROSE_GOLD_LEGGINGS = registerItem(
-        "rose_gold_leggings"
+    val ROSE_GOLD_IRON_LEGGINGS = registerItem(
+        "rose_gold_iron_leggings"
     ) { properties ->
-        Item(properties.armor(ROSE_GOLD_ARMOR_MATERIAL, EquipmentType.LEGGINGS))
+        Item(properties.armor(ROSE_GOLD_IRON_ARMOR_MATERIAL, EquipmentType.LEGGINGS))
     }
 
-    val ROSE_GOLD_BOOTS = registerItem(
-        "rose_gold_boots"
+    val ROSE_GOLD_IRON_BOOTS = registerItem(
+        "rose_gold_iron_boots"
     ) { properties ->
-        Item(properties.armor(ROSE_GOLD_ARMOR_MATERIAL, EquipmentType.BOOTS))
+        Item(properties.armor(ROSE_GOLD_IRON_ARMOR_MATERIAL, EquipmentType.BOOTS))
     }
 
     val ROSE_GOLD_HORSE_ARMOR = registerItem(
         "rose_gold_horse_armor"
     ) { properties ->
-        Item(properties.horseArmor(ROSE_GOLD_ARMOR_MATERIAL))
+        Item(properties.horseArmor(ROSE_GOLD_IRON_ARMOR_MATERIAL))
     }
 
     fun init() {}

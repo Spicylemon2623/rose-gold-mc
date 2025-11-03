@@ -61,32 +61,32 @@ object RoseGoldItems {
         "rose_gold_carrot"
     ) { properties -> Item(properties) }
 
-    val ROSE_GOLD_SWORD = registerItem(
-        "rose_gold_sword"
+    val ROSE_GOLD_IRON_SWORD = registerItem(
+        "rose_gold_iron_sword"
     ) { properties ->
         Item(properties.sword(material, 3.0f, -2.4f))
     }
 
-    val ROSE_GOLD_AXE = registerItem(
-        "rose_gold_axe"
+    val ROSE_GOLD_IRON_AXE = registerItem(
+        "rose_gold_iron_axe"
     ) { properties ->
         AxeItem(material, 6.0f, -3.0f, properties)
     }
 
-    val ROSE_GOLD_PICKAXE = registerItem(
-        "rose_gold_pickaxe"
+    val ROSE_GOLD_IRON_PICKAXE = registerItem(
+        "rose_gold_iron_pickaxe"
     ) { properties ->
         Item(properties.pickaxe(material, 1.5f, -2.8f))
     }
 
-    val ROSE_GOLD_SHOVEL = registerItem(
-        "rose_gold_shovel"
+    val ROSE_GOLD_IRON_SHOVEL = registerItem(
+        "rose_gold_iron_shovel"
     ) { properties ->
         ShovelItem(material, -0.5f, -3.0f, properties)
     }
 
-    val ROSE_GOLD_HOE /* YOU 🫵 */ = registerItem(
-        "rose_gold_hoe"
+    val ROSE_GOLD_IRON_HOE /* YOU 🫵 */ = registerItem(
+        "rose_gold_iron_hoe"
     ) { properties ->
         HoeItem(material, -2.0f, -3.0f, properties)
     }
@@ -119,8 +119,38 @@ object RoseGoldItems {
         )
     )
 
-    val ROSE_GOLD_SMITHING_UPGRADE_TEMPLATE = registerItem(
-        "rose_gold_smithing_upgrade_template"
+    val ROSE_GOLD_IRON_SMITHING_UPGRADE_TEMPLATE = registerItem(
+        "rose_gold_iron_smithing_upgrade_template"
+
+    ) { properties ->
+        SmithingTemplateItem(
+            RoseGoldItems.NETHERITE_UPGRADE_APPLIES_TO_TEXT,
+            RoseGoldItems.NETHERITE_UPGRADE_INGREDIENTS_TEXT,
+            RoseGoldItems.NETHERITE_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
+            RoseGoldItems.NETHERITE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
+            SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+            SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures(),
+            properties
+        )
+    }
+
+    val ROSE_GOLD_DIAMOND_SMITHING_UPGRADE_TEMPLATE = registerItem(
+        "rose_gold_diamond_smithing_upgrade_template"
+
+    ) { properties ->
+        SmithingTemplateItem(
+            RoseGoldItems.NETHERITE_UPGRADE_APPLIES_TO_TEXT,
+            RoseGoldItems.NETHERITE_UPGRADE_INGREDIENTS_TEXT,
+            RoseGoldItems.NETHERITE_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
+            RoseGoldItems.NETHERITE_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
+            SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+            SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures(),
+            properties
+        )
+    }
+
+    val ROSE_GOLD_NETHERITE_SMITHING_UPGRADE_TEMPLATE = registerItem(
+        "rose_gold_netherite_smithing_upgrade_template"
 
     ) { properties ->
         SmithingTemplateItem(
