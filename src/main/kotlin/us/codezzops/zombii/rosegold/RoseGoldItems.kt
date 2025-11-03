@@ -11,6 +11,8 @@ import net.minecraft.item.ToolMaterial
 import net.minecraft.item.Items
 import net.minecraft.item.ShovelItem
 import net.minecraft.item.HoeItem
+import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.item.SmithingTemplateItem
 import net.minecraft.item.consume.ApplyEffectsConsumeEffect
 import net.minecraft.registry.Registries
@@ -21,6 +23,7 @@ import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
 import net.minecraft.util.Util
 import java.util.function.Function
+import kotlin.reflect.KProperty1
 
 object RoseGoldItems {
 
@@ -246,5 +249,16 @@ object RoseGoldItems {
     }
 
     fun init() {}
+
+    fun addItemsToGroup(entries: ItemGroup.Entries) {
+        this::class.members
+            // Filter only for properties that are of type Item
+            .filter { it.returnType.classifier == Item::class }
+            .filterIsInstance<KProperty1<RoseGoldItems, Item>>()
+            .map { it.get(this) }
+            .forEach { item ->
+                entries.add(ItemStack(item))
+            }
+    }
 
 }

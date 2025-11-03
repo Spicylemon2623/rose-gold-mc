@@ -4,11 +4,15 @@ import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.MapColor
 import net.minecraft.item.BlockItem
+import net.minecraft.item.Item
+import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.Identifier
+import kotlin.reflect.KProperty1
 
 object RoseGoldBlocks {
     private fun keyOfBlock(name: String): RegistryKey<Block> =
@@ -53,4 +57,14 @@ object RoseGoldBlocks {
     )
 
     fun init() {}
+
+    fun addBlocksToGroup(entries: ItemGroup.Entries) {
+        this::class.members
+            .filter { it.returnType.classifier == Block::class }
+            .filterIsInstance<KProperty1<RoseGoldBlocks, Block>>()
+            .map { it.get(this) }
+            .forEach { block ->
+                entries.add(ItemStack(block.asItem()))
+            }
+    }
 }

@@ -2,6 +2,8 @@ package us.codezzops.zombii.rosegold
 
 import com.google.common.collect.Maps
 import net.minecraft.item.Item
+import net.minecraft.item.ItemGroup
+import net.minecraft.item.ItemStack
 import net.minecraft.item.equipment.ArmorMaterial
 import net.minecraft.item.equipment.EquipmentAsset
 import net.minecraft.item.equipment.EquipmentType
@@ -13,6 +15,7 @@ import net.minecraft.sound.SoundEvents
 import net.minecraft.util.Identifier
 import us.codezzops.zombii.rosegold.RoseGoldItems.registerItem
 import java.util.Map
+import kotlin.reflect.KProperty1
 
 object RoseGoldArmorItems {
 
@@ -145,5 +148,16 @@ object RoseGoldArmorItems {
     }
 
     fun init() {}
+
+    fun addItemsToGroup(entries: ItemGroup.Entries) {
+        this::class.members
+            // Filter only for properties that are of type Item
+            .filter { it.returnType.classifier == Item::class }
+            .filterIsInstance<KProperty1<RoseGoldArmorItems, Item>>()
+            .map { it.get(this) }
+            .forEach { item ->
+                entries.add(ItemStack(item))
+            }
+    }
 
 }
