@@ -5,7 +5,9 @@
 	"name": "Rose Gold",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"Spicylemon",
+		"Mr-Zombii",
+		"Codeoppz"
 	],
     "accessWidener": "rose_gold.accesswidener",
 	"contact": {
