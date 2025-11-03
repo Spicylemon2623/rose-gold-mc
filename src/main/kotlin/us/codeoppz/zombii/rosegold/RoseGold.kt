@@ -12,6 +12,8 @@ object RoseGold : ModInitializer {
 		logger.info("Hello Fabric world!")
 
         RoseGoldItems.init()
+        RoseGoldArmorItems.init()
         RoseGoldBlocks.init()
 	}
+
 }
